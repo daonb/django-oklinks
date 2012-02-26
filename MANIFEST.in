@@ -1,0 +1,5 @@
+recursive-include oklinks/templates/oklinks *.html
+recursive-include oklinks/fixtures *
+include AUTHORS
+include LICENSE
+include README.rst
