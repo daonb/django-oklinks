@@ -1,5 +1,6 @@
 recursive-include oklinks/templates/oklinks *.html
 recursive-include oklinks/fixtures *
+recursive-include oklinks/static/icons *.png
 include AUTHORS
 include LICENSE
 include README.rst
