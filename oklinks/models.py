@@ -9,11 +9,9 @@ from django.conf import settings
 
 from managers import LinksManager
 
-link_file_storage = FileSystemStorage(os.path.join(settings.DATA_ROOT, 'link_files_storage'))
-
 _default_linktype = False
+
 def get_default_linktype():
-    global _default_linktype
     if not _default_linktype:
         _default_linktype = LinkType.objects.get(title='default')
     return _default_linktype
@@ -53,4 +51,4 @@ class LinkedFile(models.Model):
     link = models.ForeignKey(Link, null=True, blank=True, default=None)
     sha1 = models.CharField(max_length=1000, null=True)
     last_updated = models.DateTimeField(auto_now=True, null=True)
-    link_file = models.FileField(storage=link_file_storage, upload_to='link_files')
+    link_file = models.FileField(upload_to='link_files')

@@ -7,7 +7,8 @@ from django.core.urlresolvers import reverse
 from django.core.files import File
 from django.contrib.sites.models import Site
 from django.template import Template, Context
-from knesset.links.models import Link, LinkType
+from oklinks.models import Link, LinkType
+from django.conf import settings
 
 class TestViews(unittest.TestCase):
 
@@ -34,14 +35,14 @@ class TestViews(unittest.TestCase):
 
     def testImageType(self):
         # test a link with  a type image
-        f = open(os.path.join("testdata", "testimage.png"),"r")
+        f = open(os.path.join(os.path.dirname(__file__), "fixtures", "testimage.png"),"r")
         self.type_a.image=File(f)
         self.type_a.save()
         c = Context ({'obj': self.obj})
         t = Template('{% load links %}{% object_links obj %}')
         r = re.sub('\s', '', t.render(c))
         self.assertEquals(r, 
-  '<ulclass="links"><li><ahref="http://www.example.com/l1">&nbsp;<imgsrc="/static/icons/testimage.png"alt="a">l1</a></li></ul>')
+  '<ulclass="links"><li><ahref="http://www.example.com/l1">&nbsp;<imgsrc="%sicons/testimage.png"alt="a">l1</a></li></ul>' % settings.MEDIA_URL)
 
     def tearDown(self):
         self.l1.delete()
