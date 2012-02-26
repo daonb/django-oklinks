@@ -10,7 +10,7 @@ Installation
 
   $ git clone https://daonb@github.com/daonb/django-oklinks.git
   $ cd django-oklinks
-  $ python setup.py
+  $ python setup.py install
 
 Testing
 -------
