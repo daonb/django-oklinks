@@ -19,16 +19,11 @@ setup(
         'oklinks',
         'oklinks.management',
         'oklinks.management.commands',
-        'oklinks.migrations',
         'oklinks.templatetags',
     ],
     include_package_data=True,
-    requires=[
-        'django_tastypie',
-    ],
-    install_requires=[
-        'django_tastypie',
-    ],
+    requires=[ 'django_tastypie', ],
+    install_requires=[ 'django_tastypie', ],
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Web Environment',
