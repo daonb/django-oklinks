@@ -28,7 +28,7 @@ class TestViews(unittest.TestCase):
         self.type_a.image = None
         self.type_a.save()
         c = Context ({'obj': self.obj})
-        t = Template('{% load links %}{% object_links obj %}')
+        t = Template('{% load oklinks_tags %}{% object_links obj %}')
         r = re.sub('\s', '', t.render(c))
         self.assertEquals(r, 
   '<ulclass="links"><li><ahref="http://www.example.com/l1">&nbsp;(a)l1</a></li></ul>')
@@ -39,7 +39,7 @@ class TestViews(unittest.TestCase):
         self.type_a.image=File(f)
         self.type_a.save()
         c = Context ({'obj': self.obj})
-        t = Template('{% load links %}{% object_links obj %}')
+        t = Template('{% load oklinks_tags %}{% object_links obj %}')
         r = re.sub('\s', '', t.render(c))
         self.assertEquals(r, 
   '<ulclass="links"><li><ahref="http://www.example.com/l1">&nbsp;<imgsrc="%sicons/testimage.png"alt="a">l1</a></li></ul>' % settings.MEDIA_URL)
